@@ -1,7 +1,8 @@
-import { Button, Table, Select, DatePicker, Spin, Input } from "antd";
+import { Button, Input } from "antd";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import TodoModal from "./TodoModal";
+import React, { useState } from "react";
+// import TodoModal from "./TodoModal";
+import { useNavigate } from "react-router-dom";
 
 
 interface CreateInter {
@@ -10,6 +11,7 @@ interface CreateInter {
 }
 
 const CreateTodo = () => {
+  const navigate = useNavigate();
 
   const [Activity, setActivity] = useState("");
   const [DateToComplete, setDateToComplete] = useState("")
@@ -54,6 +56,7 @@ const CreateTodo = () => {
         console.log("response", response.data);
         setActivity('');
         setDateToComplete('');
+        navigate('/showAll');
       })
       .catch((error) => {
         console.log('error occured', error);
@@ -82,19 +85,32 @@ const CreateTodo = () => {
         handleOk={handleOk}
         currentItem={currentItem} /> */}
 
-      <div style={{ background: 'linear-gradient(#0D324D,#0FFDVC)' }}>
-        <label style={{ width: "30%", marginLeft: '40px', fontWeight: 'bolder', marginTop: '100px' }}>Activity:</label><br /><br />
-        <Input name='Activity' value={Activity} placeholder='Enter Your Activity' style={{ width: '40%', marginLeft: '40px', background: 'linear-gradient(#274046,#e6dada)' }}
-          onChange={(e) => setActivity(e.target.value)} /><br /><br />
+      <div style={{ background: 'linear-gradient(#0D324D,#0FFDVC)', marginTop: "5%", marginLeft: "30%" }}>
+        <div>
+          <h1 style={{ fontFamily: 'cursive', color: 'teal', marginBottom: '100px', marginLeft: '80px', fontWeight: 'bolder' }}>Create Your TODO</h1>
+          <hr style={{
+            border: 'none',
+            borderTop: '3px solid black',
+            width: '100%',
+            marginLeft: '-200px',
+            marginTop: '-60px'
+          }} />
+        </div>
 
-        <label style={{ width: "30%", marginLeft: '40px', fontWeight: 'bolder' }}>Date To Complete:</label><br /><br />
-        <Input type="date" name='Date To Complete' value={DateToComplete} placeholder='Enter Your Activity' style={{ width: '40%', marginLeft: '40px', background: 'linear-gradient(#274046,#e6dada)' }}
-          onChange={(e) => setDateToComplete(e.target.value)}
-          min={new Date().toISOString().split('T')[0]} /><br /><br />
+        <div style={{ marginTop: '70px' }}>
+          <label style={{ width: "30%", marginLeft: '40px', fontWeight: 'bolder' }}>Activity:</label><br /><br />
+          <Input name='Activity' value={Activity} placeholder='Enter Your Activity' style={{ width: '40%', marginLeft: '40px', color: 'whitesmoke', background: 'linear-gradient(#274046,#e6dada)' }}
+            onChange={(e) => setActivity(e.target.value)} /><br /><br />
 
-        <Button style={{ background: '#E97451', width: '150px', marginLeft: "50px", fontWeight: 'bold', boxShadow: '10px 10px  5px black' }}
-          onClick={handleOk}
-        >Submit</Button>
+          <label style={{ width: "30%", marginLeft: '40px', fontWeight: 'bolder' }}>Date To Complete:</label><br /><br />
+          <Input type="date" name='Date To Complete' value={DateToComplete} placeholder='Enter Your Activity' style={{ width: '40%', marginLeft: '40px', color: 'whitesmoke', background: 'linear-gradient(#274046,#e6dada)' }}
+            onChange={(e) => setDateToComplete(e.target.value)}
+            min={new Date().toISOString().split('T')[0]} /><br /><br />
+
+          <Button style={{ background: '#E97451', width: '150px', marginLeft: "50px", fontWeight: 'bold', boxShadow: '10px 10px  5px black' }}
+            onClick={handleOk}
+          >Submit</Button>
+        </div>
       </div>
     </>
   );

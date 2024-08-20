@@ -192,7 +192,7 @@ const TodoComponent = () => {
   return (
     <>
       {/* #274046,#e6dada */}
-      <div style={{ fontWeight: 'bolder', color: "whitesmoke", background: '#355c7d', textAlign: 'center' }}>TODO APPLICATION</div>
+      <div style={{ fontWeight: 'bolder', color: "yellow", background: '#355c7d', textAlign: 'center' }}>TODO APPLICATION</div>
       <div style={{ backgroundImage: "linear-gradient(#355c7d,#a280)" }}>
         <br /><br />
         {/* <Button style={{

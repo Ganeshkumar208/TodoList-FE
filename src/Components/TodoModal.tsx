@@ -111,7 +111,7 @@ const TodoModal: React.FC<TodoModalProps> = ({
       onOk={onOkClick}
       onCancel={() => {
         setVisible(false);
-        window.location.reload();
+        // window.location.reload();
         setUpdatedData(null);
       }}
     >
@@ -129,8 +129,7 @@ const TodoModal: React.FC<TodoModalProps> = ({
           placeholder="Enter Your Activity"
           value={updatedData?.Activity}
           onChange={(e) => onInputChange(e, "Activity")}
-          disabled={currentItem}
-        />
+          disabled />
       </div>
 
       {updatedData?.Status ? (

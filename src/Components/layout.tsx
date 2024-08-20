@@ -1,19 +1,16 @@
-
-
-import React, { Children, useState } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CaretDownOutlined } from '@ant-design/icons';
 import TodoComponent from './TodoComponent';
 import CreateTodo from './createTodo';
-// import type { MenuProps } from 'antd';
-// import { icons } from 'antd/es/image/PreviewGroup';
-import { Layout, Menu, theme } from 'antd';
+import { Layout, Menu } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import addtodo from '../Components/Images/to-do-list.png'
+import showtodo from '../Components/Images/juggle.png'
 
-const { Header, Content, Footer, Sider } = Layout;
 
-// type MenuItem = Required<MenuProps>['items'][number];
 
+const { Sider } = Layout;
 
 type NavigationMappingType = {
   "createTodo": string,
@@ -31,8 +28,32 @@ const items = [
     icons: <CaretDownOutlined style={{ color: 'white' }} />,
     label: 'Todos',
     children: [
-      { key: 'createTodo', label: 'CreateTodo' },
-      { key: 'showAll', label: 'ShowAll' }
+      {
+        key: 'createTodo',
+        icon: (
+          <img
+            src={addtodo}
+            alt="Add Todo Icon"
+            style={{ width: '20px', height: '20px' }}
+          />
+        ),
+        label: (
+          <span style={{ fontWeight: 'bolder', fontFamily: 'monospace', color: 'aquamarine' }}>Create Todo</span>
+        )
+      },
+      {
+        key: 'showAll',
+        icon: (
+          <img
+            src={showtodo}
+            alt="Add Todo Icon"
+            style={{ width: '20px', height: '20px' }}
+          />
+        ),
+        label: (
+          <span style={{ fontWeight: 'bolder', fontFamily: 'monospace', color: 'aquamarine' }}>ShowAll</span>
+        )
+      }
     ]
   }
 ]
@@ -42,7 +63,7 @@ const App: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <Layout style={{ minHeight: '100vh' }}>
+    <Layout style={{ minHeight: '100vh', backgroundColor: "red" }}>
       <Sider collapsible={false} collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
         <div className="demo-logo-vertical" />
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} onClick={({ key }: any) => {
