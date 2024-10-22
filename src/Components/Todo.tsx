@@ -175,7 +175,7 @@ const Todo = () => {
     <div>
       <br />
       <h1 style={{ fontWeight: 'bold', color: 'grey' }}>Todo Application</h1> <br /><br />
-      <Button type='primary' onClick={showModal1}>Create a Todo</Button> <br /><br />
+      <Button type='primary' onClick={showModal1}>Create Your Todo</Button> <br /><br />
 
       <Table columns={columns} dataSource={tableData} ></Table>
 
